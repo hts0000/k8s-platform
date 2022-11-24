@@ -29,5 +29,16 @@ func (r *router) InitAPiRouter(router *gin.Engine) {
 		PUT("/api/k8s/deployment/restart", Deployment.RestartDeployment).
 		PUT("/api/k8s/deployment/scale", Deployment.ScaleDeployment).
 		POST("/api/k8s/deployment/create", Deployment.CreateDeployment).
-		GET("/api/k8s/deployment/numns", Deployment.GetDeloymentNumPerNs)
+		GET("/api/k8s/deployment/numns", Deployment.GetDeloymentNumPerNs).
+		//daemonset
+		GET("/api/k8s/daemonset", Daemonset.GetDaemonSet).
+		GET("/api/k8s/daemonset/detail", Daemonset.GetDaemonSetDetail).
+		POST("/api/k8s/daemonset/del", Daemonset.DeleteDaemonSet).
+		PUT("/api/k8s/daemonset/update", Daemonset.UpdateDaemonSet).
+		//service
+		GET("/api/k8s/svc", Svc.GetSvc).
+		GET("/api/k8s/daemonset/detail", Svc.GetSvcDetail).
+		POST("/api/k8s/daemonset/del", Svc.DeleteSvc).
+		PUT("/api/k8s/daemonset/update", Svc.UpdateSvc)
+
 }

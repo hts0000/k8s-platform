@@ -3,6 +3,7 @@ package service
 import (
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
+	newv1 "k8s.io/api/networking/v1"
 	"sort"
 	"strings"
 	"time"
@@ -122,4 +123,113 @@ func (d deploymentCell) GetCreation() time.Time {
 }
 func (d deploymentCell) GetName() string {
 	return d.Name
+}
+
+// demonset
+type daemonSetCell appsv1.DaemonSet
+
+func (d daemonSetCell) GetCreation() time.Time {
+	return d.CreationTimestamp.Time
+}
+func (d daemonSetCell) GetName() string {
+	return d.Name
+}
+
+//statefulset
+
+type statefulsetCell appsv1.StatefulSet
+
+func (d statefulsetCell) GetCreation() time.Time {
+	return d.CreationTimestamp.Time
+}
+func (d statefulsetCell) GetName() string {
+	return d.Name
+}
+
+// node
+type nodeCell corev1.Node
+
+func (p nodeCell) GetCreation() time.Time {
+	return p.CreationTimestamp.Time
+}
+
+func (p nodeCell) GetName() string {
+	return p.Name
+}
+
+// namepsace
+type namepsaceCell corev1.Namespace
+
+func (p namepsaceCell) GetCreation() time.Time {
+	return p.CreationTimestamp.Time
+}
+
+func (p namepsaceCell) GetName() string {
+	return p.Name
+}
+
+// pv
+type pvCell corev1.PersistentVolume
+
+func (p pvCell) GetCreation() time.Time {
+	return p.CreationTimestamp.Time
+}
+
+func (p pvCell) GetName() string {
+	return p.Name
+}
+
+// service
+type serviceCell corev1.Service
+
+func (p serviceCell) GetCreation() time.Time {
+	return p.CreationTimestamp.Time
+}
+
+func (p serviceCell) GetName() string {
+	return p.Name
+}
+
+// Ingress
+type ingressCell newv1.Ingress
+
+func (p ingressCell) GetCreation() time.Time {
+	return p.CreationTimestamp.Time
+}
+
+func (p ingressCell) GetName() string {
+	return p.Name
+}
+
+// configmap
+type configMapCell corev1.ConfigMap
+
+func (p configMapCell) GetCreation() time.Time {
+	return p.CreationTimestamp.Time
+}
+
+func (p configMapCell) GetName() string {
+	return p.Name
+}
+
+// secret
+type secretCell corev1.Secret
+
+func (p secretCell) GetCreation() time.Time {
+	return p.CreationTimestamp.Time
+}
+
+func (p secretCell) GetName() string {
+	return p.Name
+}
+
+// pvc
+type pvcCell corev1.PersistentVolumeClaim
+
+func (p pvcCell) GetCreation() time.Time {
+	return p.CreationTimestamp.Time
+}
+
+func (p pvcCell) GetName() string {
+	return p.Name
 }
